@@ -6,6 +6,7 @@ tmp
 *.iml
 *.ipr
 *.iws
+**/dist
 *.zip
 /out
 /.idea_modules
