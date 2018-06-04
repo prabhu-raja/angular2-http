@@ -20,6 +20,7 @@ tmp
 bin/
 .settings
 node_modules
+/dist/
 builds/
 app/resource/output
 templateCache.js
