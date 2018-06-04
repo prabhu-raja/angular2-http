@@ -3,9 +3,11 @@ tmp
 .idea
 .vscode
 *.log
+*.js.map
 *.iml
 *.ipr
 *.iws
+**/dist/**
 **/dist
 *.zip
 /out
@@ -21,9 +23,6 @@ tmp
 bin/
 .settings
 node_modules
-dist
-/dist
-dist/
 /dist/
 builds/
 app/resource/output
