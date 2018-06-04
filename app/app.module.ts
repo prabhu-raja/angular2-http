@@ -4,6 +4,7 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 
+import { UserService } from "./shared/services/user.service";
 @NgModule({
   imports: [ 
     BrowserModule,
@@ -12,6 +13,9 @@ import { AppComponent } from './app.component';
   ],
   declarations: [ 
     AppComponent 
+  ],
+  providers: [
+    UserService
   ],
   bootstrap: [ AppComponent ]
 })

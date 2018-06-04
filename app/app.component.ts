@@ -3,7 +3,7 @@ import { Http } from "@angular/http";
 import { User } from "./shared/models/user";
 
 import 'rxjs/add/operator/map';
-
+import { UserService } from "./shared/services/user.service";
 @Component({
   selector: 'my-app',
   template: `
@@ -19,13 +19,10 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent implements OnInit {
   users: User[];
-  constructor (private http: Http) {
-
-  }
+  constructor (private service: UserService) { }
 
   ngOnInit() {
-    this.http.get('https://reqres.in/api/users')
-      .map(res => res.json().data)
+    this.service.getUsers()
       .subscribe(usrs => this.users = usrs);
   }
 }
