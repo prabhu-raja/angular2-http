@@ -3,9 +3,12 @@ tmp
 .idea
 .vscode
 *.log
+*.js.map
 *.iml
 *.ipr
 *.iws
+**/dist/**
+**/dist
 *.zip
 /out
 /.idea_modules
