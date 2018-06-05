@@ -7,15 +7,23 @@ import { UserService } from "./shared/services/user.service";
 @Component({
   selector: 'my-app',
   template: `
-    <div class="jumbotron text-center">
-      <h1>The App Lives!</h1>
-      <div *ngIf="users">
-        <div *ngFor="let usr of users">
-          <h2>{{usr.first_name}}</h2>
+    <div class="container">
+    
+      <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a routerLink="/" class="navbar-brand">
+              My HTTP App
+            </a>
+          </div>
         </div>
+        <ul class="nav navbar-nav">
+          <li><a routerLink="/users">Users</a></li>
+        </ul>
       </div>
+      
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
   `
 })
 export class AppComponent implements OnInit {
