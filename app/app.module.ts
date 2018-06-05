@@ -4,6 +4,8 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 
+import { appUserRouting } from "./app.routing";
+
 import { UsersComponent } from "./users/users.component";
 import { UserService } from "./shared/services/user.service";
 
@@ -13,7 +15,8 @@ import 'rxjs/add/operator/catch';
   imports: [ 
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    appUserRouting
   ],
   declarations: [ 
     AppComponent,
