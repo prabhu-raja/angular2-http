@@ -8,6 +8,7 @@ import { appUserRouting } from "./app.routing";
 
 import { UsersComponent } from "./users/users.component";
 import { UserListComponent } from "./users/user-list/user-list.component";
+import { UserSingleComponent } from "./users/user-single/user-single.component";
 import { UserService } from "./shared/services/user.service";
 
 import 'rxjs/add/operator/map';
@@ -22,7 +23,8 @@ import 'rxjs/add/operator/catch';
   declarations: [ 
     AppComponent,
     UsersComponent,
-    UserListComponent
+    UserListComponent,
+    UserSingleComponent
   ],
   providers: [
     UserService

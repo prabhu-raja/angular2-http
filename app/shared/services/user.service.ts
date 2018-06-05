@@ -12,15 +12,15 @@ export class UserService {
      */
     getUsers(): Observable<User[]> {
         return this.http.get(this.usersUrl)
-            .map(res => res.json().data)
-            .catch(this.handleError);
+                        .map(res => res.json().data)
+                        .catch(this.handleError);
     }
 
     // get a single user
-    getUser(): Observable<User> {
-        return this.http.get('http://example.com')
-            .map(res => res.json().data)
-            .catch(this.handleError);
+    getUser(id: number): Observable<User> {
+        return this.http.get(`${this.usersUrl}/${id}`)
+                        .map(res => res.json().data)
+                        .catch(this.handleError);
     }
 
     // create a user
