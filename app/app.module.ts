@@ -4,6 +4,7 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 
+import { UsersComponent } from "./users/users.component";
 import { UserService } from "./shared/services/user.service";
 
 import 'rxjs/add/operator/map';
@@ -15,7 +16,8 @@ import 'rxjs/add/operator/catch';
     FormsModule
   ],
   declarations: [ 
-    AppComponent 
+    AppComponent,
+    UsersComponent
   ],
   providers: [
     UserService
