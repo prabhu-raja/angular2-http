@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from "@angular/http";
+import { Http, Response } from "@angular/http";
 import { User } from "./shared/models/user";
 
-import 'rxjs/add/operator/map';
+
 import { UserService } from "./shared/services/user.service";
 @Component({
   selector: 'my-app',
@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.service.getUsers()
-      .subscribe(usrs => this.users = usrs);
+      .subscribe(
+        usrs => this.users = usrs,
+        err  => {
+          console.log('⛽️',err);
+        });
   }
 }
