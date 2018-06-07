@@ -5,7 +5,7 @@
     <div class="col-sm-4" *ngFor="let usr of users">
         <div class="user-card text-center" [routerLink]="['/users', usr.id]">
             <img [src]="usr.avatar" class="user-avatar img-rounded">
-            <h2>{{usr.first_name}} {{usr.last_name}}</h2>
+            <h2>{{usr.name}} <small>{{usr.username}}</small></h2>
         </div>
     </div>
 </div>

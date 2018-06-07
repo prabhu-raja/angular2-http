@@ -1,7 +1,5 @@
 node_modules/
+dist/
 vendor/
-.awcache/
-/dist/
 npm-debug.log*
-.idea
 .vscode

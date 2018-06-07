@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable} from 'rxjs/Observable';
 import { User } from "../models/user";
+
 @Injectable()
 export class UserService {
     private usersUrl: string = 'https://reqres.in/api/users';
@@ -13,6 +14,7 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get(this.usersUrl)
                         .map(res => res.json().data)
+                        .map(mUsrs => mUsrs.map(this.toUser))
                         .catch(this.handleError);
     }
 
@@ -20,6 +22,7 @@ export class UserService {
     getUser(id: number): Observable<User> {
         return this.http.get(`${this.usersUrl}/${id}`)
                         .map(res => res.json().data)
+                        .map(this.toUser)
                         .catch(this.handleError);
     }
 
@@ -29,6 +32,17 @@ export class UserService {
 
     // delete a user
 
+    /**
+     * Convert User Info from API to our standard
+     */
+    private toUser(mUsr): User {
+        return {
+            id      : mUsr.id,
+            name    : `${mUsr.first_name} ${mUsr.last_name}`,
+            username: mUsr.first_name,
+            avatar  : mUsr.avatar
+        };
+    }
     /**
      * Handle any errors
      */

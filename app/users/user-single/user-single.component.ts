@@ -20,6 +20,6 @@ export class UserSingleComponent implements OnInit {
         // Get the 🧔 by 🆔
         this.service
             .getUser(id)
-            .subscribe(usr => this.user = usr);
+            .subscribe(usr => { this.user = usr });
     }
 }
