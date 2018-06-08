@@ -4,6 +4,12 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 
+import { appUserRouting } from "./app.routing";
+
+import { UsersComponent } from "./users/users.component";
+import { UserListComponent } from "./users/user-list/user-list.component";
+import { UserSingleComponent } from "./users/user-single/user-single.component";
+import { UserEditComponent } from "./users/user-edit/user-edit.component";
 import { UserService } from "./shared/services/user.service";
 
 import 'rxjs/add/operator/map';
@@ -12,10 +18,15 @@ import 'rxjs/add/operator/catch';
   imports: [ 
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    appUserRouting
   ],
   declarations: [ 
-    AppComponent 
+    AppComponent,
+    UsersComponent,
+    UserListComponent,
+    UserSingleComponent,
+    UserEditComponent
   ],
   providers: [
     UserService
