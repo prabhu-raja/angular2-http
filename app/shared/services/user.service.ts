@@ -36,7 +36,8 @@ export class UserService {
      * @param user User Object
      */
     updateUser(user: User): Observable<User> {
-        return this.http.put(`${this.usersUrl}/${user.id}`, user)
+        // return this.http.put(`${this.usersUrl}/${user.id}`, user)
+        return this.http.put(`/api/users/23`, user)
                         .map(res => res.json())
                         .catch(this.handleError);
     }

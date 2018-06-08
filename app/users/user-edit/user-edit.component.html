@@ -16,6 +16,18 @@
                 name="username"
                 [(ngModel)]="user.username">
         </div>
+
+        <div 
+            *ngIf="successMsg"
+            class="alert alert-success">
+                {{ successMsg }}
+        </div>
+        <div 
+            *ngIf="notSuccessMsg"
+            class="alert alert-error">
+                {{ notSuccessMsg }}
+        </div>
+
         <button 
             type="submit" 
             class="btn btn-success">
