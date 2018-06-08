@@ -9,7 +9,7 @@ export class UserService {
     constructor(private http: Http) { }
 
     /**
-     * Get all Users
+     * Get all Users.
      */
     getUsers(): Observable<User[]> {
         return this.http.get(this.usersUrl)
@@ -18,7 +18,10 @@ export class UserService {
                         .catch(this.handleError);
     }
 
-    // get a single user
+    /**
+     * Get a single user.
+     * @param id is userId number
+     */
     getUser(id: number): Observable<User> {
         return this.http.get(`${this.usersUrl}/${id}`)
                         .map(res => res.json().data)
@@ -28,7 +31,15 @@ export class UserService {
 
     // create a user
 
-    // update a user
+    /**
+     * Update a user
+     * @param user User Object
+     */
+    updateUser(user: User): Observable<User> {
+        return this.http.put(`${this.usersUrl}/${user.id}`, user)
+                        .map(res => res.json())
+                        .catch(this.handleError);
+    }
 
     // delete a user
 
