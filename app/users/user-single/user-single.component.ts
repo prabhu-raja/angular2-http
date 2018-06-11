@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "../../shared/services/user.service";
 import { User } from "../../shared/models/user";
 
@@ -11,7 +11,8 @@ export class UserSingleComponent implements OnInit {
 
     constructor(
         private actRoute: ActivatedRoute, 
-        private service: UserService) { }
+        private service: UserService, 
+        private router: Router) { }
 
     ngOnInit() {
         // Grab the 🧔🆔 from Url 🕸
@@ -21,5 +22,14 @@ export class UserSingleComponent implements OnInit {
         this.service
             .getUser(id)
             .subscribe(usr => { this.user = usr });
+    }
+
+    deleteUser() {
+        this.service
+            .deleteUser(this.user.id)
+            .subscribe(data => {
+                console.log('👨🏻User Deleted', data)
+            });
+        this.router.navigate(['/users']);
     }
 }
