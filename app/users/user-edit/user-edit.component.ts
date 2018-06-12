@@ -25,7 +25,7 @@ export class UserEditComponent implements OnInit {
 
     // Update the 🧔
     updateUser() {
-        this.successMsg,
+        this.successMsg = '';
         this.notSuccessMsg = '';
         //
         this.service
