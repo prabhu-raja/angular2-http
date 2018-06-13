@@ -4,6 +4,11 @@
         [routerLink]="['/users', user.id, 'edit']">
             Edit
     </a>
+    <a
+        class="btn btn-danger btn-sm" 
+        (click)="deleteUser()">
+            Delete
+    </a>
     <h2>{{user.name}} <small>{{user.username}}</small></h2>
     <img [src]="user.avatar">
 </div>

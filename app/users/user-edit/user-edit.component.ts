@@ -8,6 +8,8 @@ import { UserService } from "../../shared/services/user.service";
 })
 export class UserEditComponent implements OnInit {
     user: User;
+    successMsg: string = '';
+    notSuccessMsg: string = '';
 
     constructor(
         private service: UserService,
@@ -23,10 +25,20 @@ export class UserEditComponent implements OnInit {
 
     // Update the 🧔
     updateUser() {
+        this.successMsg = '';
+        this.notSuccessMsg = '';
+        //
         this.service
             .updateUser(this.user)
-            .subscribe(updUser => {
-                console.log('🧔🏽 -> 👨🏻', updUser);
-            });
+            .subscribe(
+                updUser => {
+                    console.log('🧔🏽 -> 👨🏻', updUser);
+                    this.successMsg = 'User was updated. 🧔🏽 -> 👨🏻';
+                },
+                err => {
+                    this.notSuccessMsg = 'User could not updated 😡';
+                    console.error(err);
+                }
+            );
     }
 }

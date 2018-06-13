@@ -1,2 +1,8 @@
 <!-- Iam 🗿 component 🎇 -->
+<div *ngIf="successMsg" class="alert alert-success">
+    {{successMsg}}
+</div>
+<div *ngIf="notSuccessMsg" class="alert alert-danger">
+    {{notSuccessMsg}}
+</div>
 <router-outlet></router-outlet>

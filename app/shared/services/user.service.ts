@@ -2,14 +2,26 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Observable} from 'rxjs/Observable';
 import { User } from "../models/user";
+import { Subject } from 'rxjs/Subject';
+
 
 @Injectable()
 export class UserService {
+
     private usersUrl: string = 'https://reqres.in/api/users';
+
+    // Observable Source
+    private userCreatedSource = new Subject<User>();
+    private userDeletedSource = new Subject();
+    
+    // Observable Stream
+    userCreated$ = this.userCreatedSource.asObservable();
+    userDeleted$ = this.userDeletedSource.asObservable();
+
     constructor(private http: Http) { }
 
     /**
-     * Get all Users.
+     * Get all Users👨🏻👨🏻👨🏻.
      */
     getUsers(): Observable<User[]> {
         return this.http.get(this.usersUrl)
@@ -19,7 +31,7 @@ export class UserService {
     }
 
     /**
-     * Get a single user.
+     * Get a single user👨🏻.
      * @param id is userId number
      */
     getUser(id: number): Observable<User> {
@@ -29,19 +41,52 @@ export class UserService {
                         .catch(this.handleError);
     }
 
-    // create a user
+    /**
+     * Create User👨🏻
+     */
+    createUser(usr: User): Observable<User> {
+        return this.http.post(this.usersUrl, usr)
+                        .map(res => res.json())
+                        .do(usr => this.userCreated(usr))
+                        .catch(this.handleError);
+    }
 
     /**
-     * Update a user
+     * Delete User👨🏻
+     */
+    deleteUser(id: number): Observable<any> {
+        return this.http.delete(`${this.usersUrl}/${id}`)
+                        .do(res => this.userDeleted())
+                        .catch(this.handleError);
+    }
+
+    /**
+     * Update a user👨🏻
      * @param user User Object
      */
     updateUser(user: User): Observable<User> {
-        return this.http.put(`${this.usersUrl}/${user.id}`, user)
+        // return this.http.put(`${this.usersUrl}/${user.id}`, user)
+        return this.http.put(`/api/users/23`, user)
                         .map(res => res.json())
                         .catch(this.handleError);
     }
 
-    // delete a user
+    /**
+     * The user👨🏻 was created. Add this info to our stream
+     * @param user 
+     */
+    private userCreated(user: User) {
+        console.log('😎 user has been created');
+        this.userCreatedSource.next(user);
+    }
+
+    /**
+     * The user👨🏻 was deleted. Add this info to our stream
+     */
+    private userDeleted() {
+        console.log('😡 user has been deleted');
+        this.userDeletedSource.next();
+    }
 
     /**
      * Convert User Info from API to our standard
